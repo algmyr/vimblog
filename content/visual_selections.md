@@ -33,3 +33,25 @@ In this example I show this off by moving the cursor to the other side with
 
 asciinema(CcsDKl98ejOf88GIe78UaqV97)
 
+## Multi line insert/append in visual block mode
+This is a very useful feature for when you're making similar edits on multiple lines at once.
+The basics of it is just to create a visual block selection and then using `I` or `A`.
+Here's an example of using `I`.
+
+asciinema(s3psib1y90js2nQT2Wa7UxQvX)
+
+There is a special case for appending to the end of lines, if you do `$` when
+doing a block selection you don't target the last character, but you target the
+last column of all lines. This means that using `A` in this scenario appends to
+end of lines.
+
+Here is a slightly more involved editing task where I use this.
+I have the hex literal as left by the last example, but now I want
+to have them back as decimal but as strings.
+
+asciinema(jFVv0zmvoPnlokMJIlPRnZ0as)
+
+I make a block selection around the `0x` and `c`hange all of them into a `'`.
+I use `gv` to bring back the last visual selection,
+and I do `:s/,//` to get rid of the `,` for now.
+I again do `gv` to bring back the selection and now do the `$` then `A` to insert `',`.
