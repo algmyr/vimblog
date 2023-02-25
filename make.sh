@@ -14,4 +14,4 @@ content="$1"
 output="$2"
 
 preprocessing < "$content" |
-  pandoc_cmd --metadata date="$(last_edited_date "$content")" -o "$output"
+  pandoc_cmd --metadata footer="Last modified: $(last_edited_date "$content")" -o "$output"
