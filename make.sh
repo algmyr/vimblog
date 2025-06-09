@@ -1,5 +1,7 @@
 function last_edited_date() {
-  stat -c %y "$1" | cut -d' ' -f1
+  jj log "$1" \
+    -T 'self.committer().timestamp().format("%Y-%m-%d")' \
+    --no-graph -n 1
 }
 
 function preprocessing() {

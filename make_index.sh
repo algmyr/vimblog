@@ -13,7 +13,7 @@ function gen() {
     title="$(grep '<title>' "output/$f" | perl -p -e "s#.*<title>(.*)</title>#\1#")"
     last="$(grep -oE 'Last modified: [0-9\-]+' "output/$f")"
     echo "* [$title]($f) ($last)"
-  done | sort
+  done | sort -t'(' -k 3
 }
 
 gen | pandoc_cmd --metadata footer="Generated at: $(date +%Y-%m-%d)" -o "$1"
